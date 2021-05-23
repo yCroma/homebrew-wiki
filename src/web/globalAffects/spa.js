@@ -4,19 +4,29 @@ import updatepathname from "Events/updatepathname"
  * よって、遷移はブロックして、パスネームだけ変更してレンダリング
  */
 
-Array.from(document.querySelector("body").children, child => {
-	try {
-		child.shadowRoot.querySelectorAll("a").forEach( a => {
-			a.addEventListener("click", event => {
-				event.preventDefault();
-				window.history.pushState(null, "", a.href)
-				document.querySelector("wiki-article").dispatchEvent(updatepathname)
+// 再帰して全てのshadow dom内にある anchor link にイベントを追加
+function addPreventDefault2anker(NodeList) {
+	Array.from(NodeList, child => {
+		console.log("child: ", child)
+		if(child.children.length) {
+			addPreventDefault2anker(child.children)
+		}
+		try {
+			child.shadowRoot.querySelectorAll("a").forEach( a => {
+				a.addEventListener("click", event => {
+					event.preventDefault();
+					window.history.pushState(null, "", a.href)
+					document.querySelector("wiki-article").dispatchEvent(updatepathname)
+				})
 			})
-		})
-	} catch {
-		// shadow root がないの場合エラーをキャッチする
-	}
-})
+		} catch {
+			// shadow root がない場合のエラーをキャッチ
+		}
+
+	})
+}
+addPreventDefault2anker(document.querySelector("body").children)
+
 
 window.addEventListener("popstate", () => {
 	// updatepathname event で更新
