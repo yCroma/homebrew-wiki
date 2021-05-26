@@ -1,4 +1,4 @@
-import style_css from "./style.css"
+import style_css from "./wiki-article.css"
 
 class WikiArticle extends HTMLElement {
 	constructor() {
