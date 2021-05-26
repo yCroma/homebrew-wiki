@@ -31,12 +31,12 @@
 				 use: ["to-string-loader", "css-loader"]
 			 },
 			 {
-				 test: /\.svg$/i,
-				 use: [
-					 {
-						 loader: 'url-loader',
-					 }
-				 ]
+				 test: /\/assets\/raw\//i,
+				 use: 'raw-loader'
+			 },
+			 {
+				 test: /\/assets\/url\//i,
+				 use : 'url-loader'
 			 }
 		 ]
 	 },
@@ -46,8 +46,8 @@
      }),
    ],
    output: {
-     filename: '[name].bundle.js',
+     filename: 'bundle.js',
      path: path.resolve(__dirname, 'dist'),
-		 publicPath: '/'
+		 publicPath: '/homebrew-wiki/'
    },
  };
