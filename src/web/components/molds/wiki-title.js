@@ -4,10 +4,27 @@ class WikiTitle extends HTMLElement {
 		this.attachShadow({mode: "open"})
 	}
 	connectedCallback() {
+		const title = this.getAttribute("title") || "cannot referenced title"
 		this.shadowRoot.innerHTML = `
-		<a href="/">Cro Wiki</a>
+		<a href="/"><h1>${title}</h1></a>
+		<style>
+		h1 {
+			display: inline;
+		}
+		a {
+			text-decoration: none;
+		}
+		a:link, :visited {
+			color: #F0F0F0;
+		}
+		a:hover {
+
+		}
+		a:active, a:focus {
+
+		}
+		</style>
 		`
-		this.shadowRoot.append(this.Style())
 	}
 	Style() {
 		const style = document.createElement("style")
@@ -17,10 +34,10 @@ class WikiTitle extends HTMLElement {
 			text-decoration: none;
 		}
 		a:link, :visited {
-			color: black;
+			color: #F0F0F0;
 		}
 		a:hover {
-		
+
 		}
 		a:active, a:focus {
 
