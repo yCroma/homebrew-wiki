@@ -1,11 +1,6 @@
 import treetxt from "Src/tree.txt"
-import filesvg_opacity from "assets/document-text-outline-opacity.svg"
-import foldersvg_opacity from "assets/folder-outline-opacity.svg"
-import folderopensvg_opacity from "assets/folder-open-outline-opacity.svg"
 
-import a_css from "./a.css"
-import li_css from "./li.css"
-import ul_css from "./ul.css"
+import style_css from "./wiki-tree.css"
 
 class WikiTree extends HTMLElement {
 	constructor() {
@@ -27,7 +22,6 @@ class WikiTree extends HTMLElement {
 				: this.createLeaf(JSON)
 			ul.append(li)
 		})
-		console.log("ul: ", ul)
 		return ul
 	}
 
@@ -66,9 +60,7 @@ class WikiTree extends HTMLElement {
 	style() {
 		const style = document.createElement("style")
 		style.textContent = `
-		${a_css}
-		${li_css}
-		${ul_css}
+		${style_css}
 		`
 		return style
 	}
