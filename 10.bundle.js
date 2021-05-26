@@ -1,1 +1,1 @@
-(window.webpackJsonp=window.webpackJsonp||[]).push([[10],{36:function(n,o){n.exports="file2 index "}}]);
+(window.webpackJsonp=window.webpackJsonp||[]).push([[10],{23:function(n,o){n.exports="file2 index "}}]);

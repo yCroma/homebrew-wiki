@@ -1,1 +1,1 @@
-(window.webpackJsonp=window.webpackJsonp||[]).push([[2],{28:function(n,o){n.exports="article1-1.html "}}]);
+(window.webpackJsonp=window.webpackJsonp||[]).push([[2],{15:function(n,o){n.exports="article1-1.html "}}]);

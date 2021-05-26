@@ -1,1 +1,1 @@
-(window.webpackJsonp=window.webpackJsonp||[]).push([[11],{37:function(o,i){o.exports="このWikiはgithubでホスティングされています。 修正点、改善点はrepositoryの方までよろしくお願いします。 "}}]);
+(window.webpackJsonp=window.webpackJsonp||[]).push([[11],{24:function(o,i){o.exports="このWikiはgithubでホスティングされています。 修正点、改善点はrepositoryの方までよろしくお願いします。 "}}]);
