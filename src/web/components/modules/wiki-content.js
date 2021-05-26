@@ -1,12 +1,11 @@
-import style_css from "./style.css"
+import template from "./wiki-content.html"
 
 class WikiContent extends HTMLElement {
 	constructor() {
 		super();
 	}
 	connectedCallback() {
-		console.log("style: ", this.style())
-		this.appendChild(this.style())
+		this.innerHTML = template
 	}
 
 	style () {
