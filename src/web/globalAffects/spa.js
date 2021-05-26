@@ -7,7 +7,6 @@ import updatepathname from "Events/updatepathname"
 // 再帰して全てのshadow dom内にある anchor link にイベントを追加
 function addPreventDefault2anker(NodeList) {
 	Array.from(NodeList, child => {
-		console.log("child: ", child)
 		if(child.children.length) {
 			addPreventDefault2anker(child.children)
 		}
