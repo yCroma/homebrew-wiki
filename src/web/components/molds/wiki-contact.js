@@ -4,10 +4,9 @@ class WikiContact extends HTMLElement {
 		this.attachShadow({mode: "open"})
 	}
 	async connectedCallback() {
-		console.log("is loaded?")
 		const svg = this.getAttribute("svg")
 		const svgpath = "assets/" + svg
-		const svgdata = await import("assets/" + svg).then( module => {
+		const svgdata = await import("assets/raw/" + svg).then( module => {
 			return module.default
 		}).then( svg => {
 			return svg
@@ -17,7 +16,7 @@ class WikiContact extends HTMLElement {
 		const url = this.getAttribute("url")
 
 		this.shadowRoot.innerHTML = `
-		<img src="${svgdata}" alt=""><a href="${url}">${text}</a>
+		<a href="${url}">${svgdata}${text}</a>
 		`
 		this.shadowRoot.append(this.style())
 	}
@@ -39,7 +38,11 @@ class WikiContact extends HTMLElement {
 			text-decoration: none;
 		}
 		a:hover, a:link, a:visited, a:active, a:focus{
-			color: #111827;
+			color: white;
+		}
+		.ionicon {
+			fill: white;
+			width: 24px;
 		}
 		`
 		return style
