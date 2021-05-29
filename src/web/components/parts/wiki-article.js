@@ -15,21 +15,24 @@ class WikiArticle extends HTMLElement {
 			import(`Src/pages` + `${this.pathresolve()}`).then ( module => {
 				return module.default
 			}).then( html => {
+				// TODO: style が冗長になっているため、関数に切り出す
 				this.shadowRoot.innerHTML = html
+				this.shadowRoot.appendChild(this.style())
 			}).catch ( async err => {
 				this.shadowRoot.innerHTML = await this.return404();
 			})
 		})
-		this.appendChild(this.style())
+		// ここでstyleを当てている
+		this.shadowRoot.appendChild(this.style())
 	}
 
 	pathresolve() {
-		// / で終わるディレクトリのパスの時に対応する
-		// sample) /dir/
-		const filepath = window.location.pathname.replace("/\/homebrew\-wiki\/", "/")
-		const pathname = window.location.pathname.match(/\/$/) 
-			? window.location.pathname + "index.html" 
-			: window.location.pathname
+		// gh-pages でホスティングする際にパスがずれるから、対応
+		// /homeblew-wiki/index.html → /index.html を出力
+		const filepath = window.location.pathname.replace(/\/homebrew\-wiki\//, "/")
+		const pathname = filepath.match(/\/$/) 
+			? filepath + "index.html" 
+			: filepath;
 		return pathname
 	}
 

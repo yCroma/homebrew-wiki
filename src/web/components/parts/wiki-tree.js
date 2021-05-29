@@ -5,6 +5,9 @@ import style_css from "./wiki-tree.css"
 class WikiTree extends HTMLElement {
 	constructor() {
 		super();
+		// githubpages でホスティングする際のベースパスを宣言
+		// このパスを全ての a タグに付け足す
+		this.basepath = "/homebrew-wiki"
 		this.attachShadow({mode: "open"})
 	}
 	connectedCallback() {
@@ -30,7 +33,8 @@ class WikiTree extends HTMLElement {
 		const li = document.createElement("li")
 		const a = document.createElement("a")
 		a.textContent = `${JSON.name}`
-		a.setAttribute("href", JSON.path)
+		// githubpages ではリポジトリでパスが伸びる際に、basepathの設定が必要
+		a.setAttribute("href", this.basepath + JSON.path)
 		li.append(a)
 		/*
 		<li>
@@ -51,7 +55,8 @@ class WikiTree extends HTMLElement {
 	createLeaf( JSON ) {
 		// <li><a href="JSON.path">JSON.name</a></li>
 		const a = document.createElement("a")
-		a.setAttribute("href", JSON.path)
+		// githubpages ではリポジトリでパスが伸びる際に、basepathの設定が必要
+		a.setAttribute("href", this.basepath + JSON.path)
 		a.textContent = `${JSON.name}`
 		const li = document.createElement("li")
 		li.append(a)
