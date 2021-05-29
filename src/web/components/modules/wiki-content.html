@@ -1,7 +1,11 @@
 <wiki-tree></wiki-tree><div class="vline"></div><wiki-article></wiki-article>
 
 <style>
-wiki-content {
+:host {
+	/* fotter より少し大きいサイズをハードコーディング */
+	height: calc(100vh - 140px);
+	min-height: 400px;
+	/* 子要素を flex */
 	display: flex;
 }
 /* tree と冗長 */
@@ -10,5 +14,8 @@ wiki-tree {
 	/* tree は #DFDDDF */
 	/* ボーダー用の色 */
 	border-right: 1px solid #DDD;
+}
+wiki-content {
+	width: 80%;
 }
 </style>

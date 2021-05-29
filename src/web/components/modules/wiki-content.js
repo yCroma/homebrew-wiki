@@ -3,9 +3,11 @@ import template from "./wiki-content.html"
 class WikiContent extends HTMLElement {
 	constructor() {
 		super();
+		this.attachShadow({mode: "open"})
 	}
 	connectedCallback() {
-		this.innerHTML = template
+		this.shadowRoot.innerHTML = template
+		//this.innerHTML = template
 	}
 
 	style () {
