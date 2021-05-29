@@ -5,13 +5,13 @@ class WikiTitle extends HTMLElement {
 	}
 	connectedCallback() {
 		const title = this.getAttribute("title") || "cannot referenced title"
+		const href = this.getAttribute("href") || "/"
 		this.shadowRoot.innerHTML = `
-		<a href="/"><h1>${title}</h1></a>
+		<a href="${href}">${title}</a>
 		<style>
-		h1 {
-			display: inline;
-		}
 		a {
+			font-size: 2em;
+			font-weight: bold;
 			text-decoration: none;
 		}
 		a:link, :visited {
