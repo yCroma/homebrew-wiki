@@ -23,7 +23,10 @@ class WikiTree extends HTMLElement {
 			const li = JSON.children.length > 0 
 				? this.createBranch(JSON) 
 				: this.createLeaf(JSON)
-			ul.append(li)
+			if(li) {
+				// index.html の際 undefined が返されるためこの処理が必要
+				ul.append(li)
+			}
 		})
 		return ul
 	}
@@ -47,12 +50,20 @@ class WikiTree extends HTMLElement {
 			const treeelement = childJSON.children.length > 0 
 				? this.createBranch(childJSON) 
 				: this.createLeaf(childJSON)
-			ul.append(treeelement)
+			if(treeelement) {
+				// TODO: index.html が Leaf の時の処理が冗長。関数にして切り出す
+				ul.append(treeelement)
+			}
 		})
 		li.append(ul)
 		return li
 	}
 	createLeaf( JSON ) {
+		if(JSON.path.split("/").pop() === "index.html") {
+			// index.html は追加しない
+			return
+		}
+		// index.html でなければ下記の例のような li を返す
 		// <li><a href="JSON.path">JSON.name</a></li>
 		const a = document.createElement("a")
 		// githubpages ではリポジトリでパスが伸びる際に、basepathの設定が必要
