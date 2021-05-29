@@ -6,10 +6,12 @@
    devtool: 'inline-source-map',
    devServer: {
      contentBase: './dist',
+		 contentBasePublicPath: '/homebrew-wiki',
 		 historyApiFallback: {
 			 rewrites: [
 				 { from: /./, to: '/index.html'}
 			 ]
-		 }
+		 },
+		 openPage: 'homebrew-wiki'
    },
  });
